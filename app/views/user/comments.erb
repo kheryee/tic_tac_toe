@@ -1,0 +1,9 @@
+<div class="container">
+  Comments by <%= @user.username %><br><br>
+  <% @user.comments.each do |comment| %>
+  <% post = Post.find(comment.post_id) %>
+  on <a href="/post/ <%= post.id %>"><%= post.title %></a><br>
+  <%= comment.content %>
+    <br><br>
+  <% end %>
+</div>

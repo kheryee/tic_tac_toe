@@ -1,0 +1,26 @@
+<div class="container">
+  <h1>Lobby</h1>
+
+  <p>Welcome back <%= @user.username %></p>
+  <p>Your email: <%= @user.email %></p>
+
+
+  No one is here yet! :(<br><br>
+
+  <form action="/create_room" method="post">
+    <input type="text" name="name" placeholder="my awesome room">
+    <input type="submit" value="Create your own room">
+  </form><br><br>
+
+  Join a room:<br>
+  <% @rooms.each do |room| %>
+    <form action="/room/<%= room.id %>/join" method="post">
+      <input type="hidden" name="_method" value="patch">
+      <input type="submit" value="<%= room.name%>">
+    </form><br>
+  <% end %>
+
+  <form class="right" action="/logout" method="get">
+    <input type="submit" value="Log out">
+  </form>
+</div>

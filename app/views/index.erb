@@ -1,0 +1,17 @@
+<div class="container">
+  <h1>Welcome to Tic-Tac-Toe</h1>
+  <% if session[:user_id] %>
+    <p>Welcome back, <%= @user.username %>!</p>
+    <form action="/lobby" method="get">
+      <input type="submit" value="Go to lobby">
+    </form>
+    <form class="right" action="/logout" method="get">
+      <input type="submit" value="Log out">
+    </form>
+  <% else %>
+    <div class="login">
+      <a href="/login">Login or register here</a>
+    </div>
+  <% end %>
+
+</div>

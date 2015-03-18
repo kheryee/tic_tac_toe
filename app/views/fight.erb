@@ -1,0 +1,18 @@
+<div class="container">
+  <h2><%= @room.name %></h2><br>
+
+  <br>
+
+  <% if @room.player2 %>
+    Players in this room:
+    <%= @room.player1.name %>
+    <%= @room.player2.name %>
+  <% else %>
+    <p>It's only you in the room! Waiting for other people...</p>
+  <% end %><br>
+  <form action="/leave/<%=@room.id%>" method="post">
+    <input name="_method" type="hidden" value=update>
+    <input type="submit" value="Leave the room">
+  </form>
+
+</div>

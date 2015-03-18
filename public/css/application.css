@@ -1,0 +1,46 @@
+.container {
+  margin: 20px auto;
+  width: 600px;
+  padding: 0px 20px 20px 20px;
+  border: 1px dotted black;
+}
+th {
+  text-align: left;
+}
+
+.navbar-brand
+{
+    position: absolute;
+    width: 80%;
+    left: 0;
+    text-align: center;
+    margin: auto;
+}
+
+.header{
+  text-align: center;
+}
+
+.navbar .new_post{
+  float: right;
+}
+
+
+html, body, .container { height: 100%; }
+body > .container { height: auto; min-height: 100%; }
+
+#footer {
+ clear: both;
+ position: relative;
+ z-index: 10;
+ height: 3em;
+ margin-top: -3em;
+}
+
+.vote{
+  float: left;
+}
+
+.right {
+  text-align: right;
+}

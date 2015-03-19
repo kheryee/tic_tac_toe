@@ -1,7 +1,17 @@
 <header>
 <div class="navbar navbar-inverse navbar-fixed-top">
-  <div class="navbar-inner" text-align="right">
-    <a class="brand home" href="/">Home</a>
-  </div>
+
+    <form action="/" class="left" method="get">
+      <input type="submit" value="Home">
+    </form>
+    <% if current_user %>
+      <form class="right" action="/logout" method="get">
+          <input type="submit" value="Not <%= current_user.username %>?">
+      </form>
+    <% else %>
+    <% end %>
+    <br>
+
+
 </div>
 </header>

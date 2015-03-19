@@ -41,6 +41,41 @@ body > .container { height: auto; min-height: 100%; }
   float: left;
 }
 
+.left {
+  float: left;
+}
+
 .right {
-  text-align: right;
+  float: right;
+}
+
+button .right {
+  margin-top: 0;
+}
+
+.board {
+  border: 10px black;
+}
+
+th {
+  text-align: center;
+  font-size: -webkit-xxx-large;
+}
+
+#first {
+  margin-top: 40px black;
+  background-color: orange;
+}
+
+
+#second {
+  background-color: purple;
+}
+
+#third {
+  background-color: blue;
+}
+
+table, th, td {
+    border: 3px solid gray;
 }

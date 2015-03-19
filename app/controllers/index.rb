@@ -14,6 +14,7 @@ post '/create_room' do
 end
 
 get '/lobby' do
+  @words = ["scary", "ruthless", "violent", "sleepy", "super", "sweet"]
   @rooms = Room.all.where(active: true)
   if session[:user_id]
     @user = User.find session[:user_id]
@@ -23,29 +24,44 @@ get '/lobby' do
   end
 end
 
-get '/room/:id' do
-  @room = Room.find params[:id]
-  @player1 = @room.player1
-  @room.update(active: true)
-  @rooms = Room.all
-
-  erb :fight
-end
-
 patch '/room/:id/join' do
   @room = Room.find params[:id]
   @player1 = @room.player1
+  @room.update(player2: nil)
   @player2 = Player2.create(name: current_user.username)
   @room.update(active: true, player2_id: @player2.id)
   @rooms = Room.all
 
-  erb :fight
+  redirect "/room/#{@room.id}"
+end
+
+
+patch '/room/:id/start' do
+  @room = Room.find params[:id]
+  @player1 = @room.player1
+  @player2 = @room.player2
+  @game = Game.create(name: "#{@player1.name} vs. #{@player2.name}")
+
+  redirect "room/#{@room.id}/start"
+end
+
+get '/room/:id/start' do
+  @room = Room.find params[:id]
+  @player1 = @room.player1
+  @player2 = @room.player2
+
+  erb :start
 end
 
 get '/room/:id' do
   @room = Room.find params[:id]
   @room.active = true
   @room.save
+  if @room.player1 && @room.player2
+    @msg = "Players in this room: #{@room.player1.name} & #{@room.player2.name}"
+  else
+    @msg = "It's only you in the room! Waiting for another player..."
+  end
   @rooms = Room.all
 
   erb :fight
@@ -53,11 +69,18 @@ end
 
 
 patch '/leave/:id' do
-  @room = Room.find params[:id]
-  @room.active = false
-  @room.save
-  @rooms = Room.all
   @user = current_user
+  @room = Room.find params[:id]
+  if @room.player1.name = @user.username
+    @room.update(player1: nil)
+  else
+    @room.update(player2: nil)
+  end
+  @player = nil
+  @room.save
+  @room.update(active: false)
+  @rooms = Room.all
+
 
   erb :lobby
 end

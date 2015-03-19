@@ -1,17 +1,15 @@
+<meta http-equiv="refresh" content="2">
 <div class="container">
   <h2><%= @room.name %></h2><br>
 
-  <br>
+  <br> <%= @msg  %>  <br><br>
+  <form action="/room/<%=@room.id%>/start" method="post">
+    <input name="_method" type="hidden" value="patch">
+    <input type="submit" value="Start the game">
+  </form>
 
-  <% if @room.player2 %>
-    Players in this room:
-    <%= @room.player1.name %>
-    <%= @room.player2.name %>
-  <% else %>
-    <p>It's only you in the room! Waiting for other people...</p>
-  <% end %><br>
-  <form action="/leave/<%=@room.id%>" method="post">
-    <input name="_method" type="hidden" value=update>
+   <form class="right" action="/leave/<%=@room.id%>" method="post">
+    <input name="_method" type="hidden" value="patch">
     <input type="submit" value="Leave the room">
   </form>
 

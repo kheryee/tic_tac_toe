@@ -78,6 +78,7 @@ DEPENDENCIES
   activesupport
   byebug
   faker
+  json
   pg
   rake
   rspec

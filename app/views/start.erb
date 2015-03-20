@@ -1,30 +1,24 @@
-<script language="JavaScript">
-  window.onbeforeunload = confirmExit;
-  function confirmExit()
-  {
-    return "Are you sure you wanna leave the other player alone? :(";
-  }
-</script>
+<meta http-equiv="refresh" content="2">
 
 <div class="container">
     <h1>Ultimate Tic-Tac-Toe</h1>
     <h2><%= @player1.name %> vs. <%= @player2.name %></h2><br>
-  <div class="board">
+  <div class="board ">
     <table width="600" height="600">
       <tr id="first">
-        <th>0</th>
-        <th>0</th>
-        <th>1</th>
+        <td id="1" width="200"><p></p></td>
+        <td id="2" width="200"><p></p></td>
+        <td id="3" width="200"><p></p></td>
       </tr>
       <tr id="second">
-        <th>0</th>
-        <th>1</th>
-        <th>1</th>
+        <td id="4" width="200"><p></p></td>
+        <td id="5" width="200"><p></p></td>
+        <td id="6" width="200"><p></p></td>
       </tr>
       <tr id="third">
-        <th>1</th>
-        <th>0</th>
-        <th>1</th>
+        <td id="7" width="200"><p></p></td>
+        <td id="8" width="200"><p></p></td>
+        <td id="9" width="200"><p></p></td>
       </tr>
       </table>
   </div>

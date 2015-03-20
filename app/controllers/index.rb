@@ -65,6 +65,8 @@ get '/room/:id' do
   @rooms = Room.all
 
   erb :fight
+
+  # values = {room_id: @room.id}.to_json
 end
 
 
@@ -81,6 +83,12 @@ patch '/leave/:id' do
   @room.update(active: false)
   @rooms = Room.all
 
+  redirect '/lobby'
+end
 
-  erb :lobby
+post '/game' do
+  grid_id = params[:grid_id]
+  count = params[:count]
+
+  {}.to_json
 end

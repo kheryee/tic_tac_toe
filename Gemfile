@@ -15,7 +15,7 @@ gem 'activerecord'
 
 gem 'rake'
 gem 'byebug'
-
+gem 'json'
 gem 'shotgun'
 
 group :test do

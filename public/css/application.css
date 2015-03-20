@@ -57,9 +57,11 @@ button .right {
   border: 10px black;
 }
 
-th {
+td {
   text-align: center;
   font-size: -webkit-xxx-large;
+  max-width: 200px;
+  max-height: 200px;
 }
 
 #first {
